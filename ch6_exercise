@@ -1,0 +1,667 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled5.ipynb",
+      "provenance": [],
+      "toc_visible": true,
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rlfwo93/Python/blob/master/ch6_exercise\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RRgSY40sA2Y9",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**06-1 내가 프로그램을 만들 수 있을까?**\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab_type": "code",
+        "outputId": "358491c2-e308-4a26-fcdc-07a7a124ae42",
+        "id": "UCXQhC-qB5-K",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 54
+        }
+      },
+      "source": [
+        "print(\"첫번째 방법\")\n",
+        "def GuGu(n):\n",
+        "    result = []\n",
+        "    i = 1 #증가값을 초기화해줌.\n",
+        "    while i < 10: #while문이 break되는 조건\n",
+        "        result.append(n * i) #배열에 값을 추가해줌.\n",
+        "        i = i + 1\n",
+        "    return result #리턴을 해줘야 반환값이 있기때문에 print에서 값을 출력할수있음\n",
+        "\n",
+        "print(\"출력값 :{0}\".format(GuGu(2)))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "첫번째 방법\n",
+            "출력값 :[2, 4, 6, 8, 10, 12, 14, 16, 18]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "wKbPTSSRB6xU",
+        "colab_type": "code",
+        "outputId": "22aba80e-5d02-4539-97cc-e897459258ed",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        }
+      },
+      "source": [
+        "print(\"두번쨰방법\")\n",
+        "\n",
+        "def gugu(i):\n",
+        "  result=[]\n",
+        "  for n in range(1,10):\n",
+        "    result.append(n*i)\n",
+        "  return result  #리턴을 해줘야 반환값이 있기때문에 print에서 값을 출력할수있음\n",
+        "print(\"출력값 :{0}\".format(gugu(2)))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "두번쨰방법\n",
+            "출력값 :[2, 4, 6, 8, 10, 12, 14, 16, 18]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DIqOxxjR86sD",
+        "colab_type": "code",
+        "outputId": "a30f114a-2487-4cdf-9349-f3f0ac98cfec",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        }
+      },
+      "source": [
+        "print(\"세번쨰방법\")\n",
+        "\n",
+        "def gugu(i):\n",
+        "  result=[]\n",
+        "  result=[n*i for n in range(1,10)] #리스트내포\n",
+        "                                    #조건 for문 순으로 적으면된다.\n",
+        "  return result  #리턴을 해줘야 반환값이 있기때문에 print에서 값을 출력할수있음\n",
+        "print(\"출력값: {0}\".format(gugu(2)))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "세번쨰방법\n",
+            "출력값: [2, 4, 6, 8, 10, 12, 14, 16, 18]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Q2oyQI-M-dud",
+        "colab_type": "text"
+      },
+      "source": [
+        "# *문제2: 3과5의 배수 합하기*\n",
+        "\n",
+        "입력받는 값은? 1부터999까지\n",
+        "\n",
+        "출력하는 값은? 3의 배수와 5의 배수의 총합"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tnLgbFDt-w7-",
+        "colab_type": "code",
+        "outputId": "4a227591-3698-431d-f559-4e392d333ad2",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        }
+      },
+      "source": [
+        "print(\"첫번째 방법\")\n",
+        "result=0\n",
+        "\n",
+        "for i in range(1,1000): \n",
+        "  if i%3==0 or i%5==0 : # 논리연사자 or을 써서 둘장하나만 True이면 result에 값을 더해줌,\n",
+        "    result+=i \n",
+        "\n",
+        "print(\"출력값: {0}\".format(result))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "첫번째 방법\n",
+            "출력값: 233168\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VseBE8qH_7NP",
+        "colab_type": "code",
+        "outputId": "41420c3f-f74f-4292-e2b6-9cf83ffd5e9c",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        }
+      },
+      "source": [
+        "print(\"두번째 방법\")\n",
+        "result=0\n",
+        "i=1 # 증가할 값을 설정해줌.\n",
+        "\n",
+        "while i<1000:\n",
+        "  if i%3==0 or i%5==0 : # 논리연사자 or을 써서 둘장하나만 True이면 result에 값을 더해줌,\n",
+        "    result+=i\n",
+        "  i+=1\n",
+        "\n",
+        "\n",
+        "print(\"출력값: {0}\".format(result))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "두번째 방법\n",
+            "출력값: 233168\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KKy40Nlb_1S5",
+        "colab_type": "code",
+        "outputId": "fbcb0bd9-d8d0-4e2c-8203-fbf1248307f4",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        }
+      },
+      "source": [
+        "print(\"세번째 방법\")\n",
+        "\n",
+        "print(\"출력값:{0}\".format(sum([i for i in range(1,1000) if i%3==0 or i%5==0]))) #리스트내포로 리스트를 만들고 sum을이용하여 바로 더한값을 받음."
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "세번째 방법\n",
+            "출력값:233168\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "qXjQhOyfCopu",
+        "colab_type": "text"
+      },
+      "source": [
+        "#**06-3 게시판 페이징하기**\n",
+        "\n",
+        "**함수 이름은? getTotalPage**\n",
+        "\n",
+        "**입력 받는 값은? 게시물의 총 건수(m), 한 페이지에 보여줄 게시물 수(n)**\n",
+        "\n",
+        "**출력하는 값은? 총 페이지수**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "A_Ea7mXpDBgH",
+        "colab_type": "code",
+        "outputId": "a9f156eb-4842-46fe-f2f9-49cafde9b9cf",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 125
+        }
+      },
+      "source": [
+        "print(\"첫번째 방법\")\n",
+        "def getTotalPage(m, n):\n",
+        "    if m % n == 0:   #총건수랑 건수가 같을때 값이 제대로 나오게 해줌.\n",
+        "        return m // n\n",
+        "    else:\n",
+        "        return m // n + 1  # 총페이지를 구하는 공식\n",
+        "\n",
+        "print(\"출력값:{0}\".format(getTotalPage(5, 10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(10,10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(15, 10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(25, 10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(30, 10)))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "첫번째 방법\n",
+            "출력값:1\n",
+            "출력값:1\n",
+            "출력값:2\n",
+            "출력값:3\n",
+            "출력값:3\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "HZJjAiZ3Egvl",
+        "colab_type": "code",
+        "outputId": "f953a782-1a66-4cc5-d42d-53c236013d48",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 125
+        }
+      },
+      "source": [
+        "print(\"두번째 방법\")\n",
+        "\n",
+        "def getTotalPage(m,n):\n",
+        "  return m//n if m%n==0 else m//n+1 #if문을 한줄로 만듬.\n",
+        "\n",
+        "print(\"출력값:{0}\".format(getTotalPage(5, 10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(10,10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(15, 10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(25, 10)))\n",
+        "print(\"출력값:{0}\".format(getTotalPage(30, 10)))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "두번째 방법\n",
+            "출력값:1\n",
+            "출력값:1\n",
+            "출력값:2\n",
+            "출력값:3\n",
+            "출력값:3\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dgoo3uMXCYUo",
+        "colab_type": "text"
+      },
+      "source": [
+        "# ***06-4 간단한 메모장 만들기***\n",
+        "\n",
+        "## 필요한기능은? 메모추가하기, 메모조회하기\n",
+        "# ***입력받는 값은? 메모내용, 프로그램 실행 옵션***\n",
+        "# ***출력하는 하는 값은? memo.txt***"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_AK0BPh0DFQb",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#memo.py\n",
+        "\n",
+        "import sys\n",
+        "\n",
+        "option = sys.argv[1]  # argv는 배열임.\n",
+        "                    # 첫번째 인덱스인 0번은 실행경로이기때문에 쓸 필요가 없음.\n",
+        "                    # 두번째 인덱스인 1은 옵션이고  세번째 인덱스인 2는 내용.\n",
+        "\n",
+        "\n",
+        "\n",
+        "if option == '-a':\n",
+        "    memo = sys.argv[2]\n",
+        "    f = open('memo.txt', 'a')\n",
+        "    f.write(memo)\n",
+        "    f.write('\\n')\n",
+        "    f.close()\n",
+        "elif option == '-v':\n",
+        "    f = open('memo.txt','r')\n",
+        "    memo = f.read()\n",
+        "    f.close()\n",
+        "    print(memo)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "W56UcbigFoq6",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "run memo.py -a \"Life is too short\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AUy4yea3LQxn",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "run memo.py -a \"You need a Python\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "fV5wL-2CU4DE",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 71
+        },
+        "outputId": "3f490e73-2dde-4b41-ec93-e6dccc14c271"
+      },
+      "source": [
+        "run memo.py -v"
+      ],
+      "execution_count": 87,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Life is too short\n",
+            "You need a Python\n",
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GgEBMPgXVwI_",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#memo.py\n",
+        "\n",
+        "import sys\n",
+        "\n",
+        "option = sys.argv[1] # argv는 배열임.\n",
+        "                    # 첫번째 인덱스인 0번은 실행경로이기때문에 쓸 필요가 없음.\n",
+        "                    # 두번째 인덱스인 1은 옵션이고  세번째 인덱스인 2는 내용.\n",
+        "\n",
+        "if option == '-a':\n",
+        "    memo = sys.argv[2]\n",
+        "    with open('memo.txt1', 'a') as f:\n",
+        "        f.write(memo)\n",
+        "        f.write('\\n')\n",
+        "elif option == '-v':\n",
+        "    with open('memo.txt1', 'r') as f:\n",
+        "        memo = f.read()\n",
+        "        print(memo)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "q9XRrbpNXBzC",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "run memo1.py -a \"Life is too short\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "X_7wz3DaXRVl",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "run memo1.py -a \"You need a Python\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GrHJK343XUH4",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 71
+        },
+        "outputId": "2e2928ec-cb3f-400f-fb4e-1d823ece126b"
+      },
+      "source": [
+        "run memo1.py -v"
+      ],
+      "execution_count": 94,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Life is too short\n",
+            "You need a Python\n",
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eA9X8vBvXzxL",
+        "colab_type": "text"
+      },
+      "source": [
+        "# ***06-5 탭을 4개의 공백으로 바꾸기***"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "aqvD6tU0ZDJM",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 89
+        },
+        "outputId": "ee4e5af0-34bb-4b9f-a289-0a2b68816a23"
+      },
+      "source": [
+        "import sys\n",
+        "#sys.argv는 배열.\n",
+        "#argv[0] 은 실행결로이기떄문에 쓸필요가 없음\n",
+        "#argv[1] 부터 인자값 전달.\n",
+        "src = sys.argv[1] \n",
+        "dst = sys.argv[2]\n",
+        "\n",
+        "print(src)\n",
+        "print(dst)\n",
+        "f = open(\"a.txt\",'r')\n",
+        "tab_content = f.read()\n",
+        "f.close()\n",
+        "\n",
+        "space_content = tab_content.replace(\"\\t\", \" \"*4)\n",
+        "\n",
+        "f = open(dst, 'w')\n",
+        "f.write(space_content)\n",
+        "f.close()\n",
+        "print(space_content)"
+      ],
+      "execution_count": 120,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "-f\n",
+            "/root/.local/share/jupyter/runtime/kernel-451ad7d2-c6ab-4ac1-bc31-0f1c578fd52a.json\n",
+            "Life  is  too short\n",
+            "You need  python\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0oVYdcU6ZMen",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        },
+        "outputId": "87ce8319-e7e4-4570-ed4d-b51aa884f83c"
+      },
+      "source": [
+        "run tabto4.py a.txt b.txt"
+      ],
+      "execution_count": 125,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Life  is  too short\n",
+            "You need  python\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YKItuUk_rTPT",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import sys\n",
+        "#sys.argv는 배열.\n",
+        "#argv[0] 은 실행결로이기떄문에 쓸필요가 없음\n",
+        "#argv[1] 부터 인자값 전달.\n",
+        "src = sys.argv[1] \n",
+        "dst = sys.argv[2]\n",
+        "\n",
+        "print(src)\n",
+        "print(dst)\n",
+        "with open(\"a.txt\",'r') as f:\n",
+        "tab_content = f.read()\n",
+        "\n",
+        "\n",
+        "space_content = tab_content.replace(\"\\t\", \" \"*4)\n",
+        "\n",
+        "with open(dst, 'w') as f:\n",
+        "f.write(space_content)\n",
+        "\n",
+        "print(space_content)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uvIbvpSyp8KJ",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        },
+        "outputId": "21261e18-04d7-42b8-f8b4-04dd051cae0d"
+      },
+      "source": [
+        "run tabto4.py a.txt b.txt"
+      ],
+      "execution_count": 126,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Life  is  too short\n",
+            "You need  python\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    }
+  ]
+}
